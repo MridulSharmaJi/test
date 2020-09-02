@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 300px;
+            height: 300px;
+            padding: 5px 5px 5px 5px;
+            border: 2px solid black;
+            border-radius: 10px;
+
+        }
+        .box2{
+            margin: auto;
+            width: 50%;
+            border: 2px solid black;
+            padding: 10px;  
+          }
+    </style>
+    <script>
+        
+        function formvalid(){
+            var x = document.forms["myform"]["firstname"].value;
+            if(x== "" || x==null){
+               alert("name is required");
+               return false;
+               } 
+            }
+    </script>
+</head>
+<body>
+    <h1>
+        Exam of JS developer
+    </h1>
+    <hr>
+    <form name="myform" action="" method="POST" onsubmit="return formvalid()" >
+        <label>Name :</label><input type=”text” name=”firstname” required/><br>
+        <input type="checkbox" name=”checkme”  required/>Check
+        <br>
+        <input type="submit" value="Submit">
+     </form>
+     <hr>
+     <div class="box1"> Javascript Developer</div>
+     <hr>
+     <div  class="box2"> empty box</div>
+     <hr>
+     <button type="button" >show data</button>
+     <div id="data"></div>
+     <script>
+         $(document).ready(function(){
+            $("button").click(function(){
+                $.ajax(
+                    {url: "www.example.com/api/get/1",type: "GET",success: function(result){
+                    $("#data").html(result);
+                }})
+            })
+         })
+       
+     </script>
+    <script src="index.js"></script>
+     
+</body>
+</html>
